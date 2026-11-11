@@ -569,7 +569,15 @@ img {
   inset: 0;
   overflow: hidden;
   background: var(--board);
+  --panel-w: 0px;
   --lyric-max: clamp(34px, 5.2vw, 104px);
+  /* 舞台歌詞一行能用的寬度：左右各留 6vw，右側打開全部歌詞時再扣掉它 */
+  --fit: calc(88vw - var(--panel-w));
+}
+
+.player--panel {
+  --panel-w: clamp(300px, 25vw, 400px);
+  --lyric-max: clamp(30px, 4.4vw, 88px);
 }
 
 .player--idle {
@@ -580,7 +588,7 @@ img {
   position: absolute;
   top: 20px;
   left: 28px;
-  right: 28px;
+  right: calc(28px + var(--panel-w));
   z-index: 2;
   display: flex;
   align-items: baseline;
@@ -603,7 +611,7 @@ img {
 
 .player__stage {
   position: absolute;
-  inset: 0;
+  inset: 0 var(--panel-w) 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -698,7 +706,7 @@ img {
 }
 
 .wipe--main {
-  font-size: min(var(--lyric-max), calc(88vw / var(--w, 10)));
+  font-size: min(var(--lyric-max), calc(var(--fit) / var(--w, 10)));
   font-weight: 800;
   letter-spacing: 0.02em;
 }
@@ -713,14 +721,14 @@ img {
 
 .wipe--latin {
   font-family: var(--lyric-ja);
-  font-size: min(calc(var(--lyric-max) * 0.82), calc(88vw / var(--w, 10)));
+  font-size: min(calc(var(--lyric-max) * 0.82), calc(var(--fit) / var(--w, 10)));
   font-weight: 800;
   letter-spacing: 0.01em;
 }
 
 .wipe--ruby {
   font-family: var(--lyric-ja);
-  font-size: min(calc(var(--lyric-max) * 0.38), calc(88vw / var(--w, 10)));
+  font-size: min(calc(var(--lyric-max) * 0.38), calc(var(--fit) / var(--w, 10)));
   font-weight: 700;
   letter-spacing: 0.03em;
 }
@@ -853,7 +861,7 @@ img {
 .toast {
   position: absolute;
   top: 18px;
-  left: 50%;
+  left: calc((100% - var(--panel-w)) / 2);
   z-index: 3;
   margin: 0;
   padding: 6px 16px;
@@ -877,7 +885,7 @@ img {
 .controls {
   position: absolute;
   left: 0;
-  right: 0;
+  right: var(--panel-w);
   bottom: 0;
   z-index: 2;
   padding: 40px 28px 16px;
@@ -1041,6 +1049,158 @@ input[type='range'].vocal::-webkit-slider-runnable-track {
   color: var(--chalk-dim);
   font-size: 12px;
   letter-spacing: 0.04em;
+}
+
+.link[aria-pressed='true'] {
+  color: var(--blue);
+}
+
+.link[aria-pressed='true']:hover:not(:disabled) {
+  color: var(--blue);
+  text-decoration-color: currentColor;
+}
+
+/* 全部歌詞：釘在黑板右邊的一張歌詞單，點一句就從那裡唱 */
+.lyrics-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  width: var(--panel-w);
+  border-left: 1px solid var(--rule);
+  background: var(--board-2);
+  font-family: var(--lyric-zh);
+  font-synthesis: none;
+  animation: panel-in 320ms var(--ease-out) both;
+}
+
+.lyrics-panel[lang='ja'] {
+  font-family: var(--lyric-ja);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+.lyrics-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 16px 2px 22px;
+}
+
+.lyrics-panel__title {
+  margin: 0;
+  font-family: var(--ui);
+  font-size: var(--ui-size);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.lyrics-panel__hint {
+  margin: 0;
+  padding: 0 22px 14px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--chalk-dim);
+  font-family: var(--ui);
+  font-size: 12px;
+}
+
+.lyrics-panel__list {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 14px 10px 45vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 20px, #000 calc(100% - 56px), transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 20px, #000 calc(100% - 56px), transparent);
+}
+
+.pline {
+  display: grid;
+  grid-template-columns: 3em minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--chalk-soft);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 160ms var(--ease-out),
+    color 160ms var(--ease-out);
+}
+
+.pline:hover {
+  background: var(--board-3);
+  color: var(--chalk);
+}
+
+.pline--past {
+  color: var(--chalk-dim);
+}
+
+.pline[aria-current='true'] {
+  background: color-mix(in oklab, var(--yellow) 10%, transparent);
+  color: var(--yellow);
+}
+
+.pline__time {
+  color: var(--chalk-dim);
+  font-family: var(--ui);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pline[aria-current='true'] .pline__time {
+  color: color-mix(in oklab, var(--yellow) 75%, var(--board-2));
+}
+
+.pline__text {
+  font-size: 17px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.pline__ro {
+  grid-column: 2;
+  margin-top: 2px;
+  color: var(--blue);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.pgap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 12px 10px calc(12px + 3em + 10px);
+  color: var(--chalk-dim);
+  font-family: var(--ui);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+.pgap::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
 }
 
 /* 換歌詞對話框 */
@@ -1210,11 +1370,39 @@ input[type='range'].vocal::-webkit-slider-runnable-track {
   }
 
   .wipe--ruby {
-    font-size: max(11px, min(calc(var(--lyric-max) * 0.38), calc(88vw / var(--w, 10))));
+    font-size: max(11px, min(calc(var(--lyric-max) * 0.38), calc(var(--fit) / var(--w, 10))));
   }
 
   .controls {
     padding: 32px 16px 14px;
+  }
+
+  .player--panel {
+    --panel-w: 0px;
+    --lyric-max: clamp(26px, 7.2vw, 56px);
+  }
+
+  .lyrics-panel {
+    top: auto;
+    left: 0;
+    width: auto;
+    height: min(64vh, 560px);
+    border-top: 1px solid var(--rule-strong);
+    border-left: 0;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -18px 48px rgb(0 0 0 / 0.5);
+    animation-name: sheet-in;
+  }
+
+  @keyframes sheet-in {
+    from {
+      transform: translateY(32px);
+      opacity: 0;
+    }
+  }
+
+  .lyrics-panel__list {
+    padding-bottom: 30vh;
   }
 
   .controls__row {

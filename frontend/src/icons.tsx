@@ -60,3 +60,9 @@ export const SearchIcon = ({ size = 18 }: P) => (
     <path d="M16 16l4 4" />
   </svg>
 )
+
+export const LyricsIcon = ({ size = 18 }: P) => (
+  <svg {...base(size)}>
+    <path d="M4.5 6.5h15M4.5 12h10M4.5 17.5h12.5" />
+  </svg>
+)

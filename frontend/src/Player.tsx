@@ -4,14 +4,19 @@ import { go } from './App'
 import { DualTrackEngine } from './engine'
 import { parseLrc } from './lrc'
 import Lyrics, { type RomajiMode } from './Lyrics'
+import LyricsPanel from './LyricsPanel'
 import LyricsPicker from './LyricsPicker'
-import { BackIcon, FullscreenIcon, MinusIcon, PauseIcon, PlayIcon, PlusIcon } from './icons'
+import { BackIcon, FullscreenIcon, LyricsIcon, MinusIcon, PauseIcon, PlayIcon, PlusIcon } from './icons'
 
 const ROMAJI_MODES: { key: RomajiMode; label: string }[] = [
   { key: 'orig', label: '原文' },
   { key: 'both', label: '原文＋拼音' },
   { key: 'romaji', label: '只有拼音' },
 ]
+
+/** 點全部歌詞裡的一句時，往前多留這麼多秒，讓人有時間換氣、跟上拍子 */
+const JUMP_LEAD = 1
+const NARROW = '(max-width: 860px)'
 
 function stored<T>(key: string, fallback: T): T {
   try {
@@ -43,6 +48,11 @@ export default function Player({ id }: { id: string }) {
   const [offset, setOffset] = useState(0)
   const [idle, setIdle] = useState(false)
   const [pickerOpen, setPickerOpen] = useState(false)
+  // 記住上次有沒有打開；窄螢幕的歌詞清單會蓋住舞台，一律先收起來
+  const [panelOpen, setPanelOpen] = useState<boolean>(
+    () => stored('ktv.lyricsPanel', false) && !window.matchMedia(NARROW).matches,
+  )
+  const jumpRef = useRef<{ index: number; start: number } | null>(null)
   const [toast, setToast] = useState<string | null>(null)
   const idleTimer = useRef<number | undefined>(undefined)
   const toastTimer = useRef<number | undefined>(undefined)
@@ -155,6 +165,28 @@ export default function Player({ id }: { id: string }) {
     [id, flash],
   )
 
+  const togglePanel = useCallback(() => {
+    setPanelOpen((open) => {
+      store('ktv.lyricsPanel', !open)
+      return !open
+    })
+  }, [])
+
+  // 點全部歌詞裡的一句：跳到那句前一點點，沒在播就直接開始
+  const jumpTo = useCallback(
+    (index: number) => {
+      const line = lines[index]
+      const e = engineRef.current
+      if (!line || !e) return
+      jumpRef.current = { index, start: line.start }
+      seek(Math.max(0, line.start + offset - JUMP_LEAD))
+      if (!e.playing) void togglePlay()
+      // 窄螢幕的歌詞清單蓋住舞台，點完就收起來
+      if (window.matchMedia(NARROW).matches) setPanelOpen(false)
+    },
+    [lines, offset, seek, togglePlay],
+  )
+
   const toggleFullscreen = useCallback(() => {
     if (document.fullscreenElement) void document.exitFullscreen()
     else void document.documentElement.requestFullscreen().catch(() => {})
@@ -200,6 +232,8 @@ export default function Player({ id }: { id: string }) {
       } else if (key === '[' || key === '{') nudgeOffset(e.shiftKey ? -1 : -0.2)
       else if (key === ']' || key === '}') nudgeOffset(e.shiftKey ? 1 : 0.2)
       else if (key === 'f' || key === 'F') toggleFullscreen()
+      else if ((key === 'l' || key === 'L') && lines.length > 0) togglePanel()
+      else if (key === 'Escape' && panelOpen && window.matchMedia(NARROW).matches) setPanelOpen(false)
       else if (key === 'Escape' && !document.fullscreenElement) go('/')
       else handled = false
       if (handled) {
@@ -209,14 +243,25 @@ export default function Player({ id }: { id: string }) {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [pickerOpen, togglePlay, seek, applyVocal, vocal, toggleVocal, isJa, mode, changeMode, nudgeOffset, toggleFullscreen, wake, flash])
+  }, [pickerOpen, togglePlay, seek, applyVocal, vocal, toggleVocal, isJa, mode, changeMode, nudgeOffset, toggleFullscreen, togglePanel, panelOpen, lines.length, wake, flash])
 
   const title = meta?.track || meta?.title || ''
   const lyricTime = time - offset
   const chromeHidden = idle && playing && !pickerOpen
+  const showPanel = panelOpen && lines.length > 0
+
+  // 全部歌詞裡要標亮的那句：正在唱的；剛點下去、還在前導的那一秒就先標點的那句
+  let current = -1
+  for (let i = 0; i < lines.length && lines[i].start <= lyricTime; i++) current = i
+  const jump = jumpRef.current
+  if (jump && lyricTime < jump.start && lyricTime >= jump.start - JUMP_LEAD - 0.5) current = jump.index
 
   return (
-    <div className={`player ${chromeHidden ? 'player--idle' : ''}`} onMouseMove={wake} onPointerDown={wake}>
+    <div
+      className={`player ${chromeHidden ? 'player--idle' : ''} ${showPanel ? 'player--panel' : ''}`}
+      onMouseMove={wake}
+      onPointerDown={wake}
+    >
       <p className="player__title">
         <span className="player__song">{title}</span>
         {meta?.artist && <span className="player__artist">{meta.artist}</span>}
@@ -349,13 +394,35 @@ export default function Player({ id }: { id: string }) {
           </div>
 
           <div className="controls__group">
+            <button
+              className="link"
+              onClick={togglePanel}
+              aria-pressed={showPanel}
+              disabled={lines.length === 0}
+              title="L"
+            >
+              <LyricsIcon /> 全部歌詞
+            </button>
             <button className="link" onClick={toggleFullscreen} title="F">
               <FullscreenIcon /> 全螢幕
             </button>
           </div>
         </div>
-        <p className="keys">空白 播放 · ← → 快轉 · ↑ ↓ 導唱 · V 純伴奏 · {isJa ? 'R 拼音 · ' : ''}[ ] 歌詞時間（加 Shift 一次 1 秒）· F 全螢幕</p>
+        <p className="keys">空白 播放 · ← → 快轉 · ↑ ↓ 導唱 · V 純伴奏 · {isJa ? 'R 拼音 · ' : ''}[ ] 歌詞時間（加 Shift 一次 1 秒）· L 全部歌詞 · F 全螢幕</p>
       </div>
+
+      {showPanel && (
+        <LyricsPanel
+          lines={lines}
+          current={current}
+          offset={offset}
+          romaji={meta?.romaji ?? null}
+          mode={isJa ? mode : 'orig'}
+          lang={meta?.language ?? ''}
+          onJump={jumpTo}
+          onClose={togglePanel}
+        />
+      )}
 
       {meta && (
         <LyricsPicker
