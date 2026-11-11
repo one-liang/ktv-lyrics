@@ -338,6 +338,23 @@ img {
   font-size: 16px;
 }
 
+.search__source {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 16px;
+}
+
+.search__source-label {
+  color: var(--chalk-dim);
+}
+
+.search__source-hint {
+  color: var(--chalk-dim);
+  font-size: 13px;
+}
+
 .search__input--sm {
   height: 42px;
   font-size: var(--ui-size);
@@ -371,7 +388,7 @@ img {
 
 .track {
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 16px;
   align-items: center;
   width: 100%;
@@ -396,12 +413,26 @@ img {
   padding-left: 0;
 }
 
-.track__thumb {
+.track__art {
+  display: block;
   width: 112px;
   aspect-ratio: 16 / 9;
+  overflow: hidden;
   border-radius: 8px;
-  object-fit: cover;
   background: var(--board-3);
+}
+
+/* YouTube Music 給的是方形專輯封面，和影片縮圖一樣高 */
+.track__art--square {
+  width: 63px;
+  aspect-ratio: 1;
+}
+
+.track__thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .track__main {
@@ -672,8 +703,12 @@ img {
   letter-spacing: 0.02em;
 }
 
+/* 粉圓只有 400 一種字重：不讓瀏覽器硬加粗（假粗體會把「晴」「邊」這種筆畫多的字糊成一團），
+   只描一圈細邊補一點份量 */
 .stage:not([lang='ja']) .wipe--main {
-  -webkit-text-stroke: 0.025em currentColor;
+  font-weight: 400;
+  font-synthesis: none;
+  -webkit-text-stroke: 0.012em currentColor;
 }
 
 .wipe--latin {
@@ -794,6 +829,25 @@ img {
   color: var(--chalk-dim);
   letter-spacing: 0.08em;
   pointer-events: none;
+}
+
+.stage-warn {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: calc(9vh + 112px);
+  margin: 0;
+  text-align: center;
+  color: var(--chalk-soft);
+}
+
+.link--warn {
+  color: var(--pink);
+}
+
+.link--warn:hover:not(:disabled) {
+  color: var(--pink);
+  text-decoration-color: currentColor;
 }
 
 .toast {
@@ -1126,12 +1180,15 @@ input[type='range'].vocal::-webkit-slider-runnable-track {
   }
 
   .track {
-    grid-template-columns: 88px minmax(0, 1fr) auto;
     gap: 12px;
   }
 
-  .track__thumb {
+  .track__art {
     width: 88px;
+  }
+
+  .track__art--square {
+    width: 50px;
   }
 
   .player {
@@ -1145,6 +1202,11 @@ input[type='range'].vocal::-webkit-slider-runnable-track {
   .press-play {
     bottom: auto;
     top: 18%;
+  }
+
+  .stage-warn {
+    bottom: auto;
+    top: calc(18% + 36px);
   }
 
   .wipe--ruby {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { api, formatTime, type LyricsCandidate, type SongMeta } from './api'
+import { api, formatTime, syncLabel, type LyricsCandidate, type SongMeta } from './api'
 import { CloseIcon } from './icons'
 
 type Props = {
@@ -23,9 +23,8 @@ export default function LyricsPicker({ song, open, onClose, onApplied }: Props) 
     setBusy(true)
     setError(null)
     try {
-      const found = await api.lyricsSearch(q.trim())
-      const d = song.duration ?? 0
-      setResults(d ? [...found].sort((a, b) => Math.abs((a.duration ?? 0) - d) - Math.abs((b.duration ?? 0) - d)) : found)
+      // 後端已用人聲軌核對過每一份，對得上的排在前面
+      setResults(await api.lyricsSearch(q.trim(), song.id))
     } catch (e) {
       setError((e as Error).message)
     } finally {
@@ -76,7 +75,7 @@ export default function LyricsPicker({ song, open, onClose, onApplied }: Props) 
         </button>
       </header>
       <p className="dialog__hint">
-        影片長度 {formatTime(song.duration)}。時長最接近的歌詞版本，時間通常最準。
+        音訊長度 {formatTime(song.duration)}。每一份都用這首歌的人聲核對過時間，對得上的排在前面；需要位移的，套用時會自動調好。
       </p>
 
       <div className="tabs" role="tablist">
@@ -124,6 +123,10 @@ export default function LyricsPicker({ song, open, onClose, onApplied }: Props) 
                           {r.artist}
                           {r.album ? ` · ${r.album}` : ''}
                           {song.lyricsSource?.id === r.id && <span className="tag tag--ready">目前使用</span>}
+                          {(() => {
+                            const l = syncLabel(r.sync)
+                            return l && <span className={`tag ${l.tone === 'ok' ? 'tag--blue' : 'tag--warn'}`}>{l.text}</span>
+                          })()}
                         </span>
                       </span>
                       <span className="track__time">

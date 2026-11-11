@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { api, formatTime, type SongMeta } from './api'
+import { api, formatTime, syncLabel, type SongMeta } from './api'
 import { go } from './App'
 import { DualTrackEngine } from './engine'
 import { parseLrc } from './lrc'
@@ -248,6 +248,14 @@ export default function Player({ id }: { id: string }) {
         {ready && !playing && lines.length > 0 && time < 0.1 && (
           <p className="press-play">按空白鍵或點一下畫面開始</p>
         )}
+        {ready && !playing && lines.length > 0 && meta?.sync?.status === 'poor' && (
+          <p className="stage-warn" onClick={(e) => e.stopPropagation()}>
+            這份歌詞和音訊的時間可能對不上（也許是不同版本）。
+            <button className="link link--warn" onClick={() => setPickerOpen(true)}>
+              換一份歌詞
+            </button>
+          </p>
+        )}
       </div>
 
       {toast && (
@@ -334,6 +342,7 @@ export default function Player({ id }: { id: string }) {
             <button className="icon-btn" onClick={() => nudgeOffset(0.2)} aria-label="歌詞延後 0.2 秒" title="]">
               <PlusIcon />
             </button>
+            <SyncBadge meta={meta} offset={offset} />
             <button className="link" onClick={() => setPickerOpen(true)} disabled={!meta}>
               換歌詞
             </button>
@@ -355,10 +364,39 @@ export default function Player({ id }: { id: string }) {
           onClose={() => setPickerOpen(false)}
           onApplied={(m) => {
             setMeta(m)
-            flash('已換歌詞')
+            // 後端換歌詞時會核對時間，對得上就直接給好 offset
+            setOffset(m.offset ?? 0)
+            const s = m.sync?.status
+            flash(
+              s === 'shifted'
+                ? `已換歌詞，自動${(m.offset ?? 0) > 0 ? '延後' : '提早'} ${Math.abs(m.offset ?? 0).toFixed(1)} 秒`
+                : s === 'poor'
+                  ? '已換歌詞，但時間可能對不上'
+                  : '已換歌詞',
+            )
           }}
         />
       )}
     </div>
+  )
+}
+
+/** 歌詞時間核對結果：自動調過 offset 後使用者又手動改過，就不再宣稱「吻合」 */
+function SyncBadge({ meta, offset }: { meta: SongMeta | null; offset: number }) {
+  const sync = meta?.sync
+  const label = syncLabel(sync)
+  if (!sync || !label) return null
+  const touched = Math.abs(offset - (sync.offset ?? 0)) > 0.05
+  if (touched && label.tone === 'ok') return null
+  const title =
+    sync.status === 'poor'
+      ? '用人聲軌比對過，這份歌詞的句子和歌聲對不起來'
+      : sync.status === 'shifted'
+        ? '用人聲軌比對過，已自動調整歌詞時間'
+        : '用人聲軌比對過，每句開頭都對得上歌聲'
+  return (
+    <span className={`tag ${label.tone === 'ok' ? 'tag--blue' : 'tag--warn'}`} title={title}>
+      {sync.status === 'shifted' ? '已自動對準' : label.text}
+    </span>
   )
 }

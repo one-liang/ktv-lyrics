@@ -403,6 +403,7 @@ dependencies = [
     { name = "fastapi" },
     { name = "httpx" },
     { name = "numpy" },
+    { name = "opencc" },
     { name = "soundfile" },
     { name = "torch", version = "2.5.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
     { name = "torch", version = "2.5.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "platform_machine != 'aarch64' or platform_python_implementation != 'CPython' or sys_platform != 'linux'" },
@@ -411,6 +412,7 @@ dependencies = [
     { name = "unidic-lite" },
     { name = "uvicorn", extra = ["standard"] },
     { name = "yt-dlp", extra = ["default"] },
+    { name = "ytmusicapi" },
 ]
 
 [package.metadata]
@@ -420,12 +422,14 @@ requires-dist = [
     { name = "fastapi", specifier = ">=0.115" },
     { name = "httpx", specifier = ">=0.27" },
     { name = "numpy", specifier = ">=1.26" },
+    { name = "opencc", specifier = ">=1.1.9" },
     { name = "soundfile", specifier = ">=0.12" },
     { name = "torch", specifier = "==2.5.1", index = "https://download.pytorch.org/whl/cu124" },
     { name = "torchaudio", specifier = "==2.5.1", index = "https://download.pytorch.org/whl/cu124" },
     { name = "unidic-lite", specifier = ">=1.0.8" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.32" },
     { name = "yt-dlp", extras = ["default"] },
+    { name = "ytmusicapi", specifier = ">=1.12.3" },
 ]
 
 [[package]]
@@ -580,9 +584,6 @@ wheels = [
 name = "nvidia-cufft-cu12"
 version = "11.2.1.3"
 source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "nvidia-nvjitlink-cu12" },
-]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/27/94/3266821f65b92b3138631e9c8e7fe1fb513804ac934485a8d05776e1dd43/nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl", hash = "sha256:f083fc24912aa410be21fa16d157fed2055dab1cc4b6934a0e03cba69eb242b9", size = 211459117, upload-time = "2024-04-03T20:57:40.402Z" },
 ]
@@ -653,6 +654,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/cc/10/1cabf3188a4d9684a06568c7fd76f9536eede625733c8399cf1f5337b83e/omegaconf-2.4.0.tar.gz", hash = "sha256:7e219a70bea371da250285b9c01c7db027bc421722799c2cc4ff14bc4a2a753b", size = 3544508, upload-time = "2026-10-09T12:44:02.326Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/4f/bd/0d9f8247b0819385213d09564eda5c52d3673313c2414d51f72883ec24cd/omegaconf-2.4.0-py3-none-any.whl", hash = "sha256:f141a664c777582405e3cc6e0545ecc79429e79f844995b1a6e71c35946a025c", size = 254152, upload-time = "2026-10-09T12:43:59.764Z" },
+]
+
+[[package]]
+name = "opencc"
+version = "1.4.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/e0/12/09e62f051af1de7ca84be1d69154bd0514416ef72237e2081584cc268bc9/opencc-1.4.2.tar.gz", hash = "sha256:47977905f131d7d9cfcec29fba5d841154907e1da73103105a4a68744e0f4f1a", size = 11637673, upload-time = "2026-08-22T19:09:31.761Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4c/ad/9926e816dd654239905c4bc45997752dbe2d3d113a75cf77ba8ed866271c/opencc-1.4.2-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:052177a890ac2fdd960402d5a482163c965ec68ba7511271c19db327a5606616", size = 2149929, upload-time = "2026-08-22T19:13:48.687Z" },
+    { url = "https://files.pythonhosted.org/packages/f3/44/03bf0db03120e10f18fa1f3453593d5540b6c4250e5dc15b9551f8ffe976/opencc-1.4.2-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:2992898ccfb14aaa9feef5a38e08c4c20a79f41482626fc5a6e8ee87b23016e2", size = 2051557, upload-time = "2026-08-22T19:09:36.12Z" },
+    { url = "https://files.pythonhosted.org/packages/58/c2/6d6de602d5800b897a92eb6aad9c901eed562912dac3a0d099a06572710d/opencc-1.4.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:eb5df4bd9bd766aaa533d961123b519b51d6b678437b89650e8ffe9564c682c7", size = 2408615, upload-time = "2026-08-22T19:11:00.559Z" },
+    { url = "https://files.pythonhosted.org/packages/75/8f/e8b80f225440a045c08dfc9bf251c8cb1019e0935d104c56715afff468ad/opencc-1.4.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:d90a8b76ea5d1f425a4f2eb16114cb33abd29a73c6a4ec367361c61b1c059a10", size = 2446507, upload-time = "2026-08-22T19:09:27.558Z" },
+    { url = "https://files.pythonhosted.org/packages/43/83/ed548fd759ee4dfdd88a1f57f6877b5fd421f582e66bdf01979771d6cbba/opencc-1.4.2-cp312-cp312-win_amd64.whl", hash = "sha256:7025dc276b2a60b30ed3aefb99f1ceb8616076fd3eb3310c0f8f2046e79e76b1", size = 2890587, upload-time = "2026-08-22T19:13:44.385Z" },
 ]
 
 [[package]]
@@ -1151,4 +1165,16 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d3/e6/cceb9530e8f4e5940f6f7822d90e9d94f1b85343329a16baaf47bbbb3de1/yt_dlp_ejs-0.8.0.tar.gz", hash = "sha256:d5fa1639f63b5c4af8d932495f60689d5370f1a095782c944f7f62a303eb104e", size = 96571, upload-time = "2026-03-17T22:49:19.299Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e3/bd/520769863744b669440a924271a6159ddd82ad5ae26b4ac4d4b69e9f8d44/yt_dlp_ejs-0.8.0-py3-none-any.whl", hash = "sha256:79300e5fca7f937a1eeede11f0456862c1b41107ce1d726871e0207424f4bdb4", size = 53443, upload-time = "2026-03-17T22:49:17.736Z" },
+]
+
+[[package]]
+name = "ytmusicapi"
+version = "1.12.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4a/0d/a536a685d8b021ff984a3f9902600bc1fb613afe3c0b143e2b0d791a3c5c/ytmusicapi-1.12.3.tar.gz", hash = "sha256:be81511af7494eec8e5970c56a10e51aada6253246649e4ea6714fd6aeb654ee", size = 666106, upload-time = "2026-09-16T15:04:45.561Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/29/ad/6d471ea9d81e1f59a4d01badda21e7f3f508b94ed171c677b6547b292f73/ytmusicapi-1.12.3-py3-none-any.whl", hash = "sha256:f65db840907a43ca23b29bd563951a1e390fbe2089d7aa4ddbe2043824b2acd9", size = 111241, upload-time = "2026-09-16T15:04:43.883Z" },
 ]

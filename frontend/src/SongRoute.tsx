@@ -7,7 +7,7 @@ import { BackIcon } from './icons'
 const STAGES: { key: JobStatus['stage']; label: string }[] = [
   { key: 'downloading', label: '下載音訊' },
   { key: 'separating', label: '分離人聲' },
-  { key: 'lyrics', label: '配對歌詞' },
+  { key: 'lyrics', label: '核對歌詞' },
 ]
 
 export default function SongRoute({ id }: { id: string }) {

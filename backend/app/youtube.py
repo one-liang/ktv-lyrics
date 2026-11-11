@@ -1,13 +1,20 @@
-"""透過 yt-dlp 搜尋 YouTube 與下載音訊（僅供個人自用）。"""
+"""搜尋 YouTube Music／YouTube，用 yt-dlp 下載音訊（僅供個人自用）。
+
+YouTube Music 的「歌曲」是唱片公司上架的錄音室音軌，長度和專輯版本一致，
+LRCLIB 的歌詞時間軸幾乎都是照這個版本做的，所以預設用它。
+YouTube 一般搜尋留著找翻唱、冷門歌或 Music 上沒有的版本。
+"""
 
 from __future__ import annotations
 
 import re
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any, Callable
 
 import yt_dlp
+from ytmusicapi import YTMusic
 
 # yt-dlp 解析 YouTube 需要 JS 執行環境，本機已有 Node.js
 _BASE_OPTS: dict[str, Any] = {
@@ -124,9 +131,75 @@ def search(query: str, limit: int = 10) -> list[dict[str, Any]]:
                 "official": channel.endswith(" - Topic") or _is_official(channel, query),
                 "studioLength": bool(consensus and dur and abs(dur - consensus) <= 3),
                 "recommended": _score(e, query, consensus) >= 3,
+                "source": "youtube",
+                "live": bool(_LIVE.search(e.get("title") or "")),
+                "karaoke": bool(_KARAOKE.search(e.get("title") or "")),
             }
         )
     return results
+
+
+# ---- YouTube Music ----
+
+# 現場版、伴奏版：時間軸和錄音室版不同，或根本沒有人聲可以拆
+_LIVE = re.compile(
+    r"\b(live|concert|tour|unplugged)\b|演唱會|演唱会|現場|现场|巡迴|巡回|ライブ|ツアー", re.I
+)
+_KARAOKE = re.compile(
+    r"\b(karaoke|instrumental|off ?vocal|inst\.?)\b|伴奏|伴唱|純音樂|纯音乐|カラオケ|オフボーカル", re.I
+)
+
+_ytm: YTMusic | None = None
+_ytm_lock = threading.Lock()
+
+
+def _music() -> YTMusic:
+    global _ytm
+    with _ytm_lock:
+        if _ytm is None:
+            # 介面語言維持英文：中文介面目前 ytmusicapi 解析不到結果；地區設台灣讓排序貼近在地
+            _ytm = YTMusic(location="TW")
+        return _ytm
+
+
+def _music_thumb(video_id: str) -> str:
+    # 不用 ytmusicapi 給的 googleusercontent 封面網址：瀏覽器直接載入常被回 429。
+    # 音軌影片的 YouTube 縮圖就是專輯封面置中，前端裁成正方形剛好只剩封面
+    return f"https://i.ytimg.com/vi/{video_id}/mqdefault.jpg"
+
+
+def search_music(query: str, limit: int = 10) -> list[dict[str, Any]]:
+    rows = _music().search(query, filter="songs", limit=limit + 5)
+    items = []
+    for r in rows:
+        vid = r.get("videoId")
+        if not vid:
+            continue
+        title = r.get("title") or vid
+        artists = ", ".join(a["name"] for a in r.get("artists") or [] if a.get("name")) or None
+        album = (r.get("album") or {}).get("name")
+        live = bool(_LIVE.search(f"{title} {album or ''}"))
+        karaoke = bool(_KARAOKE.search(f"{title} {album or ''}"))
+        items.append(
+            {
+                "id": vid,
+                "title": title,
+                "channel": artists,
+                "artist": artists,
+                "album": album,
+                "duration": r.get("duration_seconds"),
+                "thumbnail": _music_thumb(vid),
+                "source": "ytmusic",
+                "official": True,
+                "live": live,
+                "karaoke": karaoke,
+                "studioLength": not (live or karaoke),
+                "recommended": not (live or karaoke),
+            }
+        )
+    # 錄音室版排前面，其餘維持 YouTube Music 的排序
+    ranked = sorted(enumerate(items), key=lambda p: (not p[1]["recommended"], p[0]))
+    return [it for _, it in ranked[:limit]]
 
 
 def download_audio(video_id: str, out_dir: Path, on_progress: Callable[[float], None]) -> tuple[Path, dict[str, Any]]:
@@ -162,6 +235,7 @@ def download_audio(video_id: str, out_dir: Path, on_progress: Callable[[float], 
         "duration": info.get("duration"),
         "thumbnail": info.get("thumbnail"),
         "track": info.get("track"),
+        "album": info.get("album"),
         "artist": (info.get("artist") or info.get("creator") or "").split(",")[0].strip() or None,
     }
     return path, meta

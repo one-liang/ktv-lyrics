@@ -18,6 +18,8 @@ import torch
 
 SAMPLE_RATE = 44100
 MODEL_NAME = "htdemucs"
+MP3_BITRATE = "320k"  # 192k 會把 19kHz 以上切掉、波形誤差也大一截（實測 26.5dB → 37.5dB）
+PEAK_CEILING = 0.89  # 約 −1 dBFS：留給 mp3 編碼的過衝，兩軌疊起來也不會爆音
 
 _model = None
 _model_lock = threading.Lock()
@@ -52,7 +54,7 @@ def _decode(path: Path) -> np.ndarray:
 
 def _encode_mp3(wav: Path, out: Path) -> None:
     subprocess.run(
-        ["ffmpeg", "-v", "error", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-b:a", "192k", str(out)],
+        ["ffmpeg", "-v", "error", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-b:a", MP3_BITRATE, str(out)],
         check=True,
     )
 
@@ -97,10 +99,19 @@ def separate(source: Path, out_dir: Path, on_progress: Callable[[float], None]) 
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
 
-    sources = sources * std + mean
+    sources = sources * std  # 直流偏移 mean 不分給各軌，下面算人聲時會從原曲帶回來
     vocal_idx = model.sources.index("vocals")
-    vocals = sources[vocal_idx]
-    inst = sources.sum(0) - vocals
+    # 伴奏 = 鼓＋貝斯＋其他三軌相加，保持乾淨；
+    # 人聲 = 原曲 − 伴奏，把模型沒分到任何一軌的殘差也收進人聲，
+    # 這樣導唱開到 100% 時兩軌相加就是原曲，不會少東西
+    inst = sources.sum(0) - sources[vocal_idx]
+    vocals = mix.to(inst.device) - inst
+
+    # 原曲常常壓到 0dBFS 以上（YouTube 的 opus 解出來會過衝），兩軌用同一個倍率降一點避免爆音
+    peak = max(float(t.abs().max()) for t in (inst, vocals, inst + vocals))
+    if peak > PEAK_CEILING:
+        gain = PEAK_CEILING / peak
+        inst, vocals = inst * gain, vocals * gain
 
     out_dir.mkdir(parents=True, exist_ok=True)
     for name, data in (("vocals", vocals), ("inst", inst)):
