@@ -1,0 +1,23 @@
+# 資料（下載的音訊、分離結果、歌詞快取）
+data/
+
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# 其他
+.DS_Store
+Thumbs.db
+
+# impeccable 的暫存檔（保留 surfaces 設計紀錄）
+.impeccable/review/
+.impeccable/serve.log
+.impeccable/direction-round.json
+.impeccable/brief-player.md
+.impeccable/questions/
+.playwright-mcp/

@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T19:14:58+08:00",
+  "title": "Design System: KTV 練唱",
+  "extensions": {
+    "colorMeta": {
+      "yellow": {
+        "role": "primary",
+        "displayName": "粉筆黃",
+        "canonical": "#f3d55b",
+        "oklch": "oklch(87.6% 0.143 95)",
+        "tonalRamp": [
+          "oklch(15% 0.143 95)",
+          "oklch(26% 0.143 95)",
+          "oklch(38% 0.143 95)",
+          "oklch(49% 0.143 95)",
+          "oklch(61% 0.143 95)",
+          "oklch(72% 0.143 95)",
+          "oklch(84% 0.143 95)",
+          "oklch(95% 0.143 95)"
+        ]
+      },
+      "yellow-hover": {
+        "role": "primary",
+        "displayName": "亮粉筆黃",
+        "canonical": "#f7e083",
+        "oklch": "oklch(90.6% 0.116 96)",
+        "tonalRamp": [
+          "oklch(15% 0.116 96)",
+          "oklch(26% 0.116 96)",
+          "oklch(38% 0.116 96)",
+          "oklch(49% 0.116 96)",
+          "oklch(61% 0.116 96)",
+          "oklch(72% 0.116 96)",
+          "oklch(84% 0.116 96)",
+          "oklch(95% 0.116 96)"
+        ]
+      },
+      "yellow-ink": {
+        "role": "primary",
+        "displayName": "黃底墨字",
+        "canonical": "#1b1a0e",
+        "oklch": "oklch(21.5% 0.022 104)",
+        "tonalRamp": [
+          "oklch(15% 0.022 104)",
+          "oklch(26% 0.022 104)",
+          "oklch(38% 0.022 104)",
+          "oklch(49% 0.022 104)",
+          "oklch(61% 0.022 104)",
+          "oklch(72% 0.022 104)",
+          "oklch(84% 0.022 104)",
+          "oklch(95% 0.022 104)"
+        ]
+      },
+      "pink": {
+        "role": "secondary",
+        "displayName": "粉紅",
+        "canonical": "#f29bb4",
+        "oklch": "oklch(78.4% 0.108 1)",
+        "tonalRamp": [
+          "oklch(15% 0.108 1)",
+          "oklch(26% 0.108 1)",
+          "oklch(38% 0.108 1)",
+          "oklch(49% 0.108 1)",
+          "oklch(61% 0.108 1)",
+          "oklch(72% 0.108 1)",
+          "oklch(84% 0.108 1)",
+          "oklch(95% 0.108 1)"
+        ]
+      },
+      "blue": {
+        "role": "tertiary",
+        "displayName": "粉藍",
+        "canonical": "#93cbe9",
+        "oklch": "oklch(81.4% 0.072 232)",
+        "tonalRamp": [
+          "oklch(15% 0.072 232)",
+          "oklch(26% 0.072 232)",
+          "oklch(38% 0.072 232)",
+          "oklch(49% 0.072 232)",
+          "oklch(61% 0.072 232)",
+          "oklch(72% 0.072 232)",
+          "oklch(84% 0.072 232)",
+          "oklch(95% 0.072 232)"
+        ]
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "粉筆紅",
+        "canonical": "#f4a091",
+        "oklch": "oklch(78.5% 0.103 31)",
+        "tonalRamp": [
+          "oklch(15% 0.103 31)",
+          "oklch(26% 0.103 31)",
+          "oklch(38% 0.103 31)",
+          "oklch(49% 0.103 31)",
+          "oklch(61% 0.103 31)",
+          "oklch(72% 0.103 31)",
+          "oklch(84% 0.103 31)",
+          "oklch(95% 0.103 31)"
+        ]
+      },
+      "board": {
+        "role": "neutral",
+        "displayName": "墨綠黑板",
+        "canonical": "#0e1411",
+        "oklch": "oklch(18.4% 0.011 163)",
+        "tonalRamp": [
+          "oklch(15% 0.011 163)",
+          "oklch(26% 0.011 163)",
+          "oklch(38% 0.011 163)",
+          "oklch(49% 0.011 163)",
+          "oklch(61% 0.011 163)",
+          "oklch(72% 0.011 163)",
+          "oklch(84% 0.011 163)",
+          "oklch(95% 0.011 163)"
+        ]
+      },
+      "board-2": {
+        "role": "neutral",
+        "displayName": "黑板二",
+        "canonical": "#151d19",
+        "oklch": "oklch(22.1% 0.014 163)",
+        "tonalRamp": [
+          "oklch(15% 0.014 163)",
+          "oklch(26% 0.014 163)",
+          "oklch(38% 0.014 163)",
+          "oklch(49% 0.014 163)",
+          "oklch(61% 0.014 163)",
+          "oklch(72% 0.014 163)",
+          "oklch(84% 0.014 163)",
+          "oklch(95% 0.014 163)"
+        ]
+      },
+      "board-3": {
+        "role": "neutral",
+        "displayName": "黑板三",
+        "canonical": "#1c2621",
+        "oklch": "oklch(25.7% 0.017 163)",
+        "tonalRamp": [
+          "oklch(15% 0.017 163)",
+          "oklch(26% 0.017 163)",
+          "oklch(38% 0.017 163)",
+          "oklch(49% 0.017 163)",
+          "oklch(61% 0.017 163)",
+          "oklch(72% 0.017 163)",
+          "oklch(84% 0.017 163)",
+          "oklch(95% 0.017 163)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "淡格線",
+        "canonical": "#26322c",
+        "oklch": "oklch(30.4% 0.019 163)",
+        "tonalRamp": [
+          "oklch(15% 0.019 163)",
+          "oklch(26% 0.019 163)",
+          "oklch(38% 0.019 163)",
+          "oklch(49% 0.019 163)",
+          "oklch(61% 0.019 163)",
+          "oklch(72% 0.019 163)",
+          "oklch(84% 0.019 163)",
+          "oklch(95% 0.019 163)"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "格線",
+        "canonical": "#3a4842",
+        "oklch": "oklch(38.7% 0.021 167)",
+        "tonalRamp": [
+          "oklch(15% 0.021 167)",
+          "oklch(26% 0.021 167)",
+          "oklch(38% 0.021 167)",
+          "oklch(49% 0.021 167)",
+          "oklch(61% 0.021 167)",
+          "oklch(72% 0.021 167)",
+          "oklch(84% 0.021 167)",
+          "oklch(95% 0.021 167)"
+        ]
+      },
+      "chalk": {
+        "role": "neutral",
+        "displayName": "粉筆白",
+        "canonical": "#eceae1",
+        "oklch": "oklch(93.6% 0.012 96)",
+        "tonalRamp": [
+          "oklch(15% 0.012 96)",
+          "oklch(26% 0.012 96)",
+          "oklch(38% 0.012 96)",
+          "oklch(49% 0.012 96)",
+          "oklch(61% 0.012 96)",
+          "oklch(72% 0.012 96)",
+          "oklch(84% 0.012 96)",
+          "oklch(95% 0.012 96)"
+        ]
+      },
+      "chalk-soft": {
+        "role": "neutral",
+        "displayName": "淡粉筆",
+        "canonical": "#b8bdb3",
+        "oklch": "oklch(79.2% 0.015 129)",
+        "tonalRamp": [
+          "oklch(15% 0.015 129)",
+          "oklch(26% 0.015 129)",
+          "oklch(38% 0.015 129)",
+          "oklch(49% 0.015 129)",
+          "oklch(61% 0.015 129)",
+          "oklch(72% 0.015 129)",
+          "oklch(84% 0.015 129)",
+          "oklch(95% 0.015 129)"
+        ]
+      },
+      "chalk-dim": {
+        "role": "neutral",
+        "displayName": "暗粉筆",
+        "canonical": "#949d97",
+        "oklch": "oklch(68.7% 0.013 157)",
+        "tonalRamp": [
+          "oklch(15% 0.013 157)",
+          "oklch(26% 0.013 157)",
+          "oklch(38% 0.013 157)",
+          "oklch(49% 0.013 157)",
+          "oklch(61% 0.013 157)",
+          "oklch(72% 0.013 157)",
+          "oklch(84% 0.013 157)",
+          "oklch(95% 0.013 157)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "舞台歌詞（中文）",
+        "purpose": "練唱舞台的歌詞主行。粉圓優先，加 0.025em 同色描邊；字級再依句長縮到一行放得下。"
+      },
+      "display-ja": {
+        "displayName": "舞台歌詞（日文）",
+        "purpose": "日文歌的歌詞主行，M PLUS Rounded 1c 優先，不加描邊。"
+      },
+      "lyric-latin": {
+        "displayName": "拼音主行",
+        "purpose": "「只有拼音」模式下取代原文的羅馬拼音。"
+      },
+      "lyric-ruby": {
+        "displayName": "拼音（疊在原文上）",
+        "purpose": "「原文＋拼音」時疊在原文上方的粉藍拼音，沒有底線。"
+      },
+      "beats": {
+        "displayName": "休止符倒數",
+        "purpose": "間奏時下一句上方的「0 0 0 0 |」拍點，等寬數字。"
+      },
+      "headline": {
+        "displayName": "頁面大標",
+        "purpose": "選歌頁「想唱哪首歌？」；準備頁標題與「唱完了」屬同一層級。"
+      },
+      "title": {
+        "displayName": "對話框標題",
+        "purpose": "換歌詞對話框的標題。"
+      },
+      "body": {
+        "displayName": "介面內文",
+        "purpose": "控制列、清單、說明的唯一字級；層級靠 500 / 700 / 800 字重與三階粉筆明度。"
+      },
+      "label": {
+        "displayName": "標籤",
+        "purpose": "清單標籤與歌詞長度差值；快捷鍵提示同尺寸但 400、字距 0.04em。"
+      },
+      "mono": {
+        "displayName": "LRC 等寬",
+        "purpose": "只用在貼上 LRC 的文字框。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "toast",
+        "value": "0 6px 20px rgb(0 0 0 / 0.35)",
+        "purpose": "頂部置中的操作回饋 toast。"
+      },
+      {
+        "name": "dialog",
+        "value": "0 24px 60px rgb(0 0 0 / 0.5)",
+        "purpose": "換歌詞對話框；背後遮罩是 rgb(6 9 7 / 0.72)。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "所有過渡與進場動畫的曲線（--ease-out）。"
+      },
+      {
+        "name": "state",
+        "value": "160ms",
+        "purpose": "按鈕、連結、chip、小圓鈕、輸入框、三段切換的 hover／焦點顏色與框線過渡。"
+      },
+      {
+        "name": "row-hover",
+        "value": "140ms",
+        "purpose": "清單列 hover 底色。"
+      },
+      {
+        "name": "beat",
+        "value": "120ms linear",
+        "purpose": "單一拍點亮起或熄滅。"
+      },
+      {
+        "name": "wipe-base",
+        "value": "220ms",
+        "purpose": "歌詞底層顏色從「下一句」變成「正在唱」。"
+      },
+      {
+        "name": "beats-fade",
+        "value": "240ms",
+        "purpose": "休止符倒數整組淡入淡出。"
+      },
+      {
+        "name": "chalk-in",
+        "value": "360ms clip-path inset 由左而右",
+        "purpose": "新的一句寫上黑板；歌詞舞台唯一的進場動作。"
+      },
+      {
+        "name": "toast-in",
+        "value": "200ms opacity + translateY(-4px → 0)",
+        "purpose": "toast 出現。"
+      },
+      {
+        "name": "dialog-in",
+        "value": "220ms opacity + translateY(8px → 0)",
+        "purpose": "對話框打開。"
+      },
+      {
+        "name": "controls-hide",
+        "value": "420ms opacity + translateY(10px)",
+        "purpose": "播放中閒置時控制列淡出。"
+      },
+      {
+        "name": "step-fill",
+        "value": "500ms transform scaleX",
+        "purpose": "準備伴奏頁步驟條的填色推進。"
+      },
+      {
+        "name": "idle-delay",
+        "value": "2600ms",
+        "purpose": "播放中無操作多久後隱藏控制列與游標（Player.tsx）。"
+      },
+      {
+        "name": "toast-hold",
+        "value": "1400ms",
+        "purpose": "toast 停留時間（Player.tsx）。"
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "prefers-reduced-motion: reduce 時所有 animation 與 transition 關閉。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "max-width: 860px",
+        "purpose": "選歌頁單欄、舞台字級上限 clamp(26px, 7.2vw, 56px)、控制列靠左換行、隱藏快捷鍵提示。"
+      },
+      {
+        "name": "compact",
+        "value": "max-width: 520px",
+        "purpose": "清單只留有顏色的標籤、搜尋按鈕與準備頁內距收窄。"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "粉筆黃實心膠囊，用在每個畫面唯一的主要動作（搜尋、找歌詞、使用這份歌詞、再試一次）。",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">使用這份歌詞</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 18px; border: 1px solid var(--yellow, #f3d55b); border-radius: 999px; background: var(--yellow, #f3d55b); color: var(--yellow-ink, #1b1a0e); font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: 14px; font-weight: 700; white-space: nowrap; cursor: pointer; transition: border-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-btn-primary:hover:not(:disabled) { background: #f7e083; border-color: #f7e083; } .ds-btn-primary:focus-visible { outline: 2px solid var(--yellow, #f3d55b); outline-offset: 3px; } .ds-btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "透明底、1px 格線框的膠囊，用在次要動作（換一首、回選歌、對話框內搜尋）。",
+      "html": "<button class=\"ds-btn-ghost\" type=\"button\">換一首</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 18px; border: 1px solid var(--rule-strong, #3a4842); border-radius: 999px; background: transparent; color: var(--chalk, #eceae1); font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: 14px; font-weight: 700; white-space: nowrap; cursor: pointer; transition: border-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-btn-ghost:hover:not(:disabled) { border-color: var(--chalk-dim, #949d97); background: var(--board-2, #151d19); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--yellow, #f3d55b); outline-offset: 3px; } .ds-btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }"
+    },
+    {
+      "name": "Play Button",
+      "kind": "button",
+      "refersTo": "button-play",
+      "description": "控制列上 48px 的粉筆黃圓鈕，播放三角／暫停雙槓。",
+      "html": "<button class=\"ds-btn-play\" type=\"button\" aria-label=\"播放\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 5.5v13l10.5-6.5z\" fill=\"currentColor\"/></svg></button>",
+      "css": ".ds-btn-play { display: inline-grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid var(--yellow, #f3d55b); border-radius: 999px; background: var(--yellow, #f3d55b); color: var(--yellow-ink, #1b1a0e); cursor: pointer; transition: border-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-btn-play:hover:not(:disabled) { background: #f7e083; border-color: #f7e083; } .ds-btn-play:focus-visible { outline: 2px solid var(--yellow, #f3d55b); outline-offset: 3px; } .ds-btn-play:disabled { opacity: 0.4; cursor: not-allowed; }"
+    },
+    {
+      "name": "Vocal Chip",
+      "kind": "chip",
+      "refersTo": "chip-vocal",
+      "description": "導唱開關。關閉是「純伴奏」格線膠囊；開啟是粉紅字、14% 粉紅底、70% 粉紅框線。",
+      "html": "<div class=\"ds-chip-row\"><button class=\"ds-chip\" type=\"button\" aria-pressed=\"false\">純伴奏</button><button class=\"ds-chip ds-chip-on\" type=\"button\" aria-pressed=\"true\">導唱</button></div>",
+      "css": ".ds-chip-row { display: flex; align-items: center; gap: 10px; } .ds-chip { height: 32px; min-width: 76px; padding: 0 14px; border: 1px solid var(--rule-strong, #3a4842); border-radius: 999px; background: transparent; color: var(--chalk-soft, #b8bdb3); font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: 14px; font-weight: 700; cursor: pointer; transition: border-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-chip:focus-visible { outline: 2px solid var(--yellow, #f3d55b); outline-offset: 3px; } .ds-chip-on { border-color: color-mix(in oklab, var(--pink, #f29bb4) 70%, transparent); background: color-mix(in oklab, var(--pink, #f29bb4) 14%, transparent); color: var(--pink, #f29bb4); }"
+    },
+    {
+      "name": "Tags",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "清單副標裡的 20px 框線標籤：預設、ready（粉筆黃）、blue（粉藍）、warn（粉紅）。只有框線與字色，沒有底色。",
+      "html": "<div class=\"ds-tags\"><span class=\"ds-tag\">官方頻道</span><span class=\"ds-tag ds-tag-blue\">標準長度</span><span class=\"ds-tag ds-tag-ready\">已備好，直接開唱</span><span class=\"ds-tag ds-tag-warn\">沒有歌詞</span></div>",
+      "css": ".ds-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; } .ds-tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border: 1px solid var(--rule-strong, #3a4842); border-radius: 999px; color: var(--chalk-soft, #b8bdb3); font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: 12px; font-weight: 700; line-height: 1; white-space: nowrap; } .ds-tag-ready { border-color: color-mix(in oklab, var(--yellow, #f3d55b) 60%, transparent); color: var(--yellow, #f3d55b); } .ds-tag-blue { border-color: color-mix(in oklab, var(--blue, #93cbe9) 55%, transparent); color: var(--blue, #93cbe9); } .ds-tag-warn { border-color: color-mix(in oklab, var(--pink, #f29bb4) 60%, transparent); color: var(--pink, #f29bb4); }"
+    },
+    {
+      "name": "Search Row",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "選歌頁搜尋列：56px 黑板二搜尋框，焦點時框線變粉筆黃；送出鈕借用框的 16px 圓角與高度並排成一組。",
+      "html": "<div class=\"ds-search\"><input class=\"ds-search-input\" type=\"search\" placeholder=\"歌名或歌手，例如：夜に駆ける YOASOBI\" aria-label=\"想唱哪首歌？\"><button class=\"ds-search-submit\" type=\"button\">搜尋</button></div>",
+      "css": ".ds-search { display: flex; gap: 10px; max-width: 760px; } .ds-search-input { flex: 1; min-width: 0; height: 56px; padding: 0 20px; border: 1px solid var(--rule-strong, #3a4842); border-radius: 16px; background: var(--board-2, #151d19); color: var(--chalk, #eceae1); font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: 18px; font-weight: 500; caret-color: var(--yellow, #f3d55b); transition: border-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-search-input::placeholder { color: var(--chalk-dim, #949d97); font-weight: 400; } .ds-search-input:focus { outline: none; border-color: var(--yellow, #f3d55b); } .ds-search-input::-webkit-search-cancel-button { -webkit-appearance: none; display: none; } .ds-search-submit { height: 56px; padding: 0 26px; border: 1px solid var(--yellow, #f3d55b); border-radius: 16px; background: var(--yellow, #f3d55b); color: var(--yellow-ink, #1b1a0e); font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: 16px; font-weight: 700; white-space: nowrap; cursor: pointer; transition: border-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-search-submit:hover { background: #f7e083; border-color: #f7e083; } .ds-search-submit:focus-visible { outline: 2px solid var(--yellow, #f3d55b); outline-offset: 3px; }"
+    },
+    {
+      "name": "Romaji Segmented Control",
+      "kind": "nav",
+      "refersTo": "segmented-option",
+      "description": "日文歌的拼音三段切換：格線膠囊外框，選中項是 18% 粉藍底、粉藍字、700。",
+      "html": "<div class=\"ds-seg\" role=\"radiogroup\" aria-label=\"羅馬拼音\"><button class=\"ds-seg-btn\" type=\"button\" role=\"radio\" aria-checked=\"false\">原文</button><button class=\"ds-seg-btn\" type=\"button\" role=\"radio\" aria-checked=\"true\">原文＋拼音</button><button class=\"ds-seg-btn\" type=\"button\" role=\"radio\" aria-checked=\"false\">只有拼音</button></div>",
+      "css": ".ds-seg { display: inline-flex; padding: 3px; border: 1px solid var(--rule-strong, #3a4842); border-radius: 999px; } .ds-seg-btn { height: 28px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--chalk-dim, #949d97); font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-seg-btn:hover { color: var(--chalk, #eceae1); } .ds-seg-btn[aria-checked=\"true\"] { background: color-mix(in oklab, var(--blue, #93cbe9) 18%, transparent); color: var(--blue, #93cbe9); font-weight: 700; } .ds-seg-btn:focus-visible { outline: 2px solid var(--yellow, #f3d55b); outline-offset: 3px; border-radius: 6px; }"
+    },
+    {
+      "name": "Track List",
+      "kind": "card",
+      "refersTo": "track-row",
+      "description": "區塊標題加無框清單列：縮圖｜標題與副標｜時間，列間 1px 淡格線，hover 底變黑板二。",
+      "html": "<section class=\"ds-panel\"><h2 class=\"ds-panel-title\">YouTube 搜尋結果</h2><ol class=\"ds-tracks\"><li><button class=\"ds-track\" type=\"button\"><span class=\"ds-track-thumb\" aria-hidden=\"true\"></span><span class=\"ds-track-main\"><span class=\"ds-track-title\">示範歌曲（官方音訊）</span><span class=\"ds-track-sub\">示範頻道<span class=\"ds-track-tag ds-track-tag-blue\">標準長度</span><span class=\"ds-track-tag ds-track-tag-ready\">已備好，直接開唱</span></span></span><span class=\"ds-track-time\">4:30</span></button></li><li><button class=\"ds-track\" type=\"button\"><span class=\"ds-track-thumb\" aria-hidden=\"true\"></span><span class=\"ds-track-main\"><span class=\"ds-track-title\">示範歌曲 MV（含前奏劇情）</span><span class=\"ds-track-sub\">示範頻道</span></span><span class=\"ds-track-time\">5:12</span></button></li></ol></section>",
+      "css": ".ds-panel { font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: 14px; line-height: 1.6; color: var(--chalk, #eceae1); } .ds-panel-title { margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--rule-strong, #3a4842); font-size: 14px; font-weight: 800; letter-spacing: 0.06em; } .ds-tracks { margin: 0; padding: 0; list-style: none; } .ds-track { display: grid; grid-template-columns: 112px minmax(0, 1fr) auto; gap: 16px; align-items: center; width: 100%; padding: 12px 10px 12px 0; border: 0; border-bottom: 1px solid var(--rule, #26322c); background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background-color 140ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-track:hover:not(:disabled) { background: var(--board-2, #151d19); } .ds-track:focus-visible { outline: 2px solid var(--yellow, #f3d55b); outline-offset: 3px; border-radius: 6px; } .ds-track:disabled { opacity: 0.5; cursor: not-allowed; } .ds-track-thumb { display: block; width: 112px; aspect-ratio: 16 / 9; border-radius: 8px; background: var(--board-3, #1c2621); } .ds-track-main { display: grid; gap: 4px; min-width: 0; } .ds-track-title { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-weight: 700; line-height: 1.45; } .ds-track-sub { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; color: var(--chalk-dim, #949d97); } .ds-track-tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border: 1px solid var(--rule-strong, #3a4842); border-radius: 999px; font-size: 12px; font-weight: 700; line-height: 1; white-space: nowrap; } .ds-track-tag-blue { border-color: color-mix(in oklab, var(--blue, #93cbe9) 55%, transparent); color: var(--blue, #93cbe9); } .ds-track-tag-ready { border-color: color-mix(in oklab, var(--yellow, #f3d55b) 60%, transparent); color: var(--yellow, #f3d55b); } .ds-track-time { color: var(--chalk-soft, #b8bdb3); font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Measure Bar",
+      "kind": "custom",
+      "description": "小節線進度條：1px 中線與 16 道 1px 小節刻度，已播放部分是 3px 粉筆黃，把手是 4×22px 的直立短棒。",
+      "html": "<div class=\"ds-measure\"><span class=\"ds-measure-time\">1:12</span><input class=\"ds-measure-range\" type=\"range\" min=\"0\" max=\"261\" step=\"0.1\" value=\"72\" aria-label=\"播放進度\" style=\"--p: 0.276\"><span class=\"ds-measure-time\">4:21</span></div>",
+      "css": ".ds-measure { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: 14px; } .ds-measure-time { min-width: 3.2em; color: var(--chalk-soft, #b8bdb3); font-variant-numeric: tabular-nums; } .ds-measure-time:last-child { text-align: right; } .ds-measure-range { -webkit-appearance: none; appearance: none; height: 24px; margin: 0; background: transparent; cursor: pointer; --fill: var(--yellow, #f3d55b); } .ds-measure-range::-webkit-slider-runnable-track { height: 14px; background: linear-gradient(var(--fill), var(--fill)) 0 50% / calc(var(--p, 0) * 100%) 3px no-repeat, linear-gradient(var(--rule-strong, #3a4842), var(--rule-strong, #3a4842)) 0 50% / 100% 1px no-repeat, repeating-linear-gradient(to right, var(--rule-strong, #3a4842) 0 1px, transparent 1px calc(100% / 16)); } .ds-measure-range::-moz-range-track { height: 14px; background: linear-gradient(var(--fill), var(--fill)) 0 50% / calc(var(--p, 0) * 100%) 3px no-repeat, linear-gradient(var(--rule-strong, #3a4842), var(--rule-strong, #3a4842)) 0 50% / 100% 1px no-repeat, repeating-linear-gradient(to right, var(--rule-strong, #3a4842) 0 1px, transparent 1px calc(100% / 16)); } .ds-measure-range::-webkit-slider-thumb { -webkit-appearance: none; width: 4px; height: 22px; margin-top: -4px; border: 0; border-radius: 2px; background: var(--fill); } .ds-measure-range::-moz-range-thumb { width: 4px; height: 22px; border: 0; border-radius: 2px; background: var(--fill); } .ds-measure-range:focus-visible { outline: 2px solid var(--yellow, #f3d55b); outline-offset: 2px; border-radius: 6px; } .ds-measure-range:disabled { opacity: 0.5; cursor: default; }"
+    },
+    {
+      "name": "Lyric Stage",
+      "kind": "custom",
+      "refersTo": "lyric-unsung",
+      "description": "雙行歌詞舞台：上行靠左正在唱（粉筆黃擦色＋底線、粉藍拼音），下行靠右是下一句，上方是「0 0 0 0 |」休止符倒數。新句以 clip-path 由左而右寫上。",
+      "html": "<div class=\"ds-stage\" lang=\"ja\"><div class=\"ds-row ds-row-top\"><div class=\"ds-row-inner\"><span class=\"ds-wipe ds-wipe-ruby\" style=\"--p: 0.55\"><span class=\"ds-wipe-base\">kyou mo issho ni utaou</span><span class=\"ds-wipe-fill\" aria-hidden=\"true\">kyou mo issho ni utaou</span></span><span class=\"ds-wipe ds-wipe-main\" style=\"--p: 0.55\"><span class=\"ds-wipe-base\">きょうも一緒に歌おう</span><span class=\"ds-wipe-fill\" aria-hidden=\"true\">きょうも一緒に歌おう</span></span></div></div><div class=\"ds-row ds-row-bottom ds-row-next\"><div class=\"ds-row-inner\"><div class=\"ds-beats\" aria-hidden=\"true\"><span class=\"ds-beat\">0</span><span class=\"ds-beat ds-beat-on\">0</span><span class=\"ds-beat ds-beat-on\">0</span><span class=\"ds-beat ds-beat-on\">0</span><svg class=\"ds-beat-bar\" viewBox=\"0 0 1 10\" preserveAspectRatio=\"none\" shape-rendering=\"crispEdges\"><rect width=\"1\" height=\"10\"/></svg></div><span class=\"ds-wipe ds-wipe-ruby\" style=\"--p: 0\"><span class=\"ds-wipe-base\">tsugi no kotoba wo matsu</span><span class=\"ds-wipe-fill\" aria-hidden=\"true\">tsugi no kotoba wo matsu</span></span><span class=\"ds-wipe ds-wipe-main\" style=\"--p: 0\"><span class=\"ds-wipe-base\">次の言葉を待つ</span><span class=\"ds-wipe-fill\" aria-hidden=\"true\">次の言葉を待つ</span></span></div></div></div>",
+      "css": ".ds-stage { --lyric-max: 44px; display: grid; row-gap: 28px; padding: 32px 28px; background: var(--board, #0e1411); color: var(--chalk, #eceae1); font-family: var(--lyric-ja, 'M PLUS Rounded 1c', 'Huninn', 'Yu Gothic UI', sans-serif); } .ds-row { display: grid; align-content: end; } .ds-row-top { justify-items: start; text-align: left; } .ds-row-bottom { justify-items: end; text-align: right; } .ds-row-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 0.15em; max-width: 100%; animation: ds-chalk-in 360ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) backwards; } @keyframes ds-chalk-in { from { clip-path: inset(-0.4em 100% -0.4em 0); } to { clip-path: inset(-0.4em 0 -0.4em 0); } } .ds-wipe { position: relative; display: inline-block; max-width: 100%; white-space: nowrap; line-height: 1.22; } .ds-wipe-base { color: var(--chalk, #eceae1); transition: color 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-wipe-fill { position: absolute; inset: 0; color: var(--yellow, #f3d55b); clip-path: inset(-0.3em calc((1 - var(--p, 0)) * 100%) -0.3em 0); } .ds-wipe::after { content: ''; position: absolute; left: 0; bottom: -0.06em; width: calc(var(--p, 0) * 100%); height: max(3px, 0.055em); border-radius: 99px; background: var(--yellow, #f3d55b); } .ds-wipe-main { font-size: var(--lyric-max); font-weight: 800; letter-spacing: 0.02em; } .ds-wipe-ruby { font-size: calc(var(--lyric-max) * 0.38); font-weight: 700; letter-spacing: 0.03em; } .ds-wipe-ruby .ds-wipe-base { color: var(--blue, #93cbe9); } .ds-wipe-ruby::after { display: none; } .ds-row-next .ds-wipe-base { color: var(--chalk-soft, #b8bdb3); } .ds-row-next .ds-wipe-ruby .ds-wipe-base { color: color-mix(in oklab, var(--blue, #93cbe9) 70%, var(--board, #0e1411)); } .ds-beats { display: flex; align-items: center; gap: 0.75em; margin-bottom: 0.3em; font-family: var(--ui, 'M PLUS Rounded 1c', 'Huninn', 'Microsoft JhengHei UI', system-ui, sans-serif); font-size: max(16px, calc(var(--lyric-max) * 0.3)); font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1; color: var(--chalk-dim, #949d97); } .ds-beat { opacity: 0.32; transition: color 120ms linear, opacity 120ms linear; } .ds-beat-on { color: var(--yellow, #f3d55b); opacity: 1; } .ds-beat-bar { flex: none; width: 1px; height: 1.2em; fill: var(--chalk-dim, #949d97); } @media (prefers-reduced-motion: reduce) { .ds-row-inner { animation: none; } .ds-wipe-base, .ds-beat { transition: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "黑板簡譜",
+    "overview": "練唱就像音樂課跟著黑板上的簡譜唱。整個介面是一塊平的墨綠黑板：還沒唱的字是粉筆白，唱過的字被粉筆黃由左到右描過，底下同時長出一條粉筆黃底線。兩行歌詞釘在黑板上的固定位置，上行靠左、下行靠右，換句時只換內容，不捲動。\n\n裝飾只有簡譜記號：拍點「0」、1px 小節線「|」、細粗雙線的終止線。播放進度是一條畫滿小節線的橫線，間奏時下一句上方的「0 0 0 0 |」逐拍倒數，選歌頁品牌旁的「1 2 3 4 |」也是同一套記號。這塊黑板是拿來用的，不是畫出來的：沒有粉筆字體、黑板材質貼圖或粉筆筆觸。\n\n密度兩極：開唱後畫面上只剩歌名和兩行最大約 104px 的大字，控制列閒置 2.6 秒就淡出；控制列與清單則收在 14px 一個字級，層級靠字重和三階粉筆明度。同一套圓頭黑體從舞台大字一路用到 12px 標籤，畫面有唱歌的溫度，但不搶歌詞。明確拒絕兩種類別慣例：模糊專輯封面背景配捲動高亮歌詞，以及老 KTV 機台的藍底描邊字。",
+    "keyCharacteristics": [
+      "平面墨綠黑板底，中性色全部偏綠；四支彩色粉筆各有固定意義。",
+      "粉筆黃代表已唱、已播放、主要動作；已唱的字一定同時有底線，不只靠顏色。",
+      "兩行歌詞位置固定（上行靠左、下行靠右），句子太長就縮字，不換行、不捲動。",
+      "簡譜記號（拍點 0、1px 小節線、終止線）是唯一的裝飾語彙。",
+      "一個圓頭黑體字族通用所有大小；所有數字用等寬數字。",
+      "能按的東西是 1px 框線膠囊；只有 toast 和對話框有陰影。",
+      "動作很少：新句子由左而右寫上去（360ms），其餘只是短的狀態過渡與淡入淡出。"
+    ],
+    "rules": [
+      {
+        "name": "The 粉筆黃描過 Rule",
+        "body": "粉筆黃只標記「已經發生」或「現在按這個」：唱過的字、已播放的長度、主要動作、焦點。未唱的字永遠是粉筆白，粉筆黃不拿來當裝飾。",
+        "section": "colors"
+      },
+      {
+        "name": "The 不只靠色相 Rule",
+        "body": "唱過的歌詞變黃的同時，底下長出一條粉筆黃底線（max(3px, 0.055em)）；進度填色是 3px，比 1px 底線粗。已唱和未唱不能只靠色相區分。",
+        "section": "colors"
+      },
+      {
+        "name": "The 四支粉筆 Rule",
+        "body": "黃、粉紅、粉藍、紅各有職責。彩色只出現在字、細框線和 14–18% 的淡底；實心的彩色面只有粉筆黃的主要按鈕與播放鍵。",
+        "section": "colors"
+      },
+      {
+        "name": "The 一個字族 Rule",
+        "body": "圓頭黑體從百 px 級的舞台大字用到 12px 標籤。不引入第二個展示字體，也不用粉筆或手寫字體；唯一例外是 LRC 貼上框的系統等寬字。",
+        "section": "typography"
+      },
+      {
+        "name": "The 小字靠字重 Rule",
+        "body": "控制列與清單只有 14px 一級（標籤 12px）。層級靠字重（500 / 700 / 800）和粉筆白、淡粉筆、暗粉筆三階明度拉開，不靠放大。",
+        "section": "typography"
+      },
+      {
+        "name": "The 數字對齊 Rule",
+        "body": "時間、百分比、歌詞偏移秒數、步驟百分比、拍點與品牌拍號一律用 tabular-nums，數字跳動時不晃。",
+        "section": "typography"
+      },
+      {
+        "name": "The 兩行固定 Rule",
+        "body": "歌詞只有兩個固定位置：上行靠左、下行靠右。換句時只換內容，不捲動、不位移；句子放不下就縮字，不換行。",
+        "section": "layout"
+      },
+      {
+        "name": "The 只剩歌詞 Rule",
+        "body": "播放中閒置 2.6 秒，控制列淡出（420ms、下移 10px）並隱藏游標，畫面上只剩歌名和兩行歌詞。暫停或開著對話框時控制列不隱藏。",
+        "section": "layout"
+      },
+      {
+        "name": "The 黑板是平的 Rule",
+        "body": "寫在黑板上的東西（清單、控制列、搜尋框、按鈕）一律平面；陰影只屬於暫時浮在黑板前面的 toast 與對話框。",
+        "section": "elevation"
+      },
+      {
+        "name": "The 1px 刻度 Rule",
+        "body": "所有刻度、小節線、分隔線都是 1px。用 SVG 畫的記號加 `shapeRendering=\"crispEdges\"` 對齊整數像素，不能糊成 2px 的灰線。",
+        "section": "shapes"
+      },
+      {
+        "name": "The 膠囊是按鈕 Rule",
+        "body": "能按的是膠囊，裝內容的才是圓角矩形。唯一例外是選歌頁搜尋列的送出鈕：它借用搜尋框的 16px 圓角與 56px 高度，和輸入框並排成一組。",
+        "section": "shapes"
+      },
+      {
+        "name": "The 粉筆寫上去 Rule",
+        "body": "歌詞舞台只有一個進場動作：新的一句以 360ms 由左而右的 clip-path 顯現，像粉筆寫上去。介面層另有 toast 與對話框的淡入、控制列的淡出，都是狀態回饋，不是表演；`prefers-reduced-motion: reduce` 時全部關閉。",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do 用粉筆黃表示「唱過、播過、按這個」，並搭配粉筆黃底線或比底線粗的填色，讓已唱和未唱不只靠色相區分。",
+      "Do 讓新的可點控制項沿用膠囊形（999px）、1px 格線框、700 字重；hover 時框線變暗粉筆，160ms ease-out。",
+      "Do 控制列與清單維持 14px 單一字級，用字重和三階粉筆明度做層級。",
+      "Do 所有時間、百分比、計數用 tabular-nums。",
+      "Do 新的刻度與分隔線用 1px；SVG 記號加 `shapeRendering=\"crispEdges\"`。",
+      "Do 文字輸入的焦點用框線變粉筆黃；其他元素用全域 2px 粉筆黃外框（外推 3px）。",
+      "Do 所有動畫在 `prefers-reduced-motion: reduce` 下關閉。"
+    ],
+    "donts": [
+      "Don't 用模糊專輯封面當背景配捲動高亮歌詞，也不要做成老 KTV 機台的藍底描邊字。",
+      "Don't 用粉筆字體、手寫字體、黑板材質貼圖或粉筆筆觸紋理；黑板是一塊平的墨綠。",
+      "Don't 加簡譜記號（拍點 0、小節線、終止線）以外的裝飾。",
+      "Don't 讓歌詞換行、捲動，或改變兩行的固定位置；放不下就縮字。",
+      "Don't 把粉筆黃用在未唱的字或純裝飾上。",
+      "Don't 在寫在黑板上的平面元素（清單列、控制列、搜尋框、按鈕）加陰影；陰影只屬於 toast 與對話框。"
+    ]
+  }
+}
